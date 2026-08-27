@@ -1,0 +1,29 @@
+-- Create Table -- 
+CREATE TABLE olympic_medals (
+    athlete VARCHAR2(30),
+    medal   VARCHAR2(10)
+);
+
+-- Sample Values -- 
+INSERT INTO olympic_medals VALUES ('John',   'Bronze');
+INSERT INTO olympic_medals VALUES ('David',  'Gold');
+INSERT INTO olympic_medals VALUES ('Mike',   'Silver');
+INSERT INTO olympic_medals VALUES ('Robert', 'Bronze');
+INSERT INTO olympic_medals VALUES ('Alex',   'Gold');
+INSERT INTO olympic_medals VALUES ('Chris',  'Silver');
+
+COMMIT;
+
+-- Normal Query with incorrect sorting -- 
+SELECT athlete, medal
+FROM olympic_medals
+ORDER BY medal;
+
+-- Custom Sorting -- 
+SELECT athlete, medal
+FROM olympic_medals
+ORDER BY CASE medal
+           WHEN 'Gold'   THEN 1
+           WHEN 'Silver' THEN 2
+           WHEN 'Bronze' THEN 3
+         END;
