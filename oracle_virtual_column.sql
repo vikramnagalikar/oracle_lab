@@ -1,10 +1,12 @@
+-- cleanup -- 
+drop table orders;
 -- Create table -- 
 CREATE TABLE orders (
     order_id    NUMBER,
     quantity    NUMBER,
     unit_price  NUMBER,
     total_value NUMBER
-        GENERATED ALWAYS AS (quantity * unit_price) VIRTUAL
+    GENERATED ALWAYS AS (quantity * unit_price) VIRTUAL
 );
 
 --- Insert sample values -- 
@@ -24,5 +26,4 @@ where table_name = 'ORDERS';
 
 -- Query the calculated value
 SELECT order_id, quantity, unit_price, total_value
-FROM orders
-WHERE total_value > 1000;
+FROM orders;
